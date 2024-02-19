@@ -1,0 +1,103 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{CSE 3500}
+\newcommand\hwnumber{2}                  % <-- homework number
+\newcommand\NetIDa{netid19823}           % <-- NetID of person #1
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\chead{\textbf{\Large Homework \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+\begin{center}
+    \LARGE Problem Set
+\end{center}
+
+
+\section*{Problem 0 -- Recurrences (20\%)}
+
+Give upper ($O(\cdot)$) asymptotic bounds for the following recurrences.
+You may assume a $O(1)$ base case for small $n$.
+Justify your answer by some combination of the following: deriving how much total work is done at an arbitrary level $k$, how many levels there are, and how much work is required to merge (function body). 
+For each recurrence, state whether or not it is top-heavy, bottom-heavy, or even work.
+Answers that only cite the Master theorem will not receive full credit.
+
+\begin{enumerate}
+    \item $T(n)=2T \left( \frac{n}{2} \right)+O(n)$
+    \item $T(n)=2T \left( \frac{n}{2} \right)+O(1)$
+    \item $T(n)=7T \left( \frac{n}{2} \right)+O(n^3)$
+    \item $T(n)=7T \left( \frac{n}{2} \right)+O(n^2)$
+    \item $T(n)=4T \left( \frac{n}{2} \right)+O(n^2 \sqrt{n})$
+    \item $T(n)=4T \left( \frac{n}{2} \right)+O(n \log_2(n))$
+\end{enumerate}
+
+\newpage
+
+\section*{Problem 1 -- Covering a chess board (20\%)}
+You are given a $2^k \times 2^k$ board of squares (e.g. a chess board) with the top left square removed.
+Prove, by giving a divide-and-conquer algorithm or argument, that you can exactly cover the entire board with L-shaped pieces (each covering 3 squares).
+
+\newpage
+
+\section*{Problem 2 -- Counting inverted pairs (20\%)}
+You are given an unsorted list $L$ that has $k\geq0$ pairs of indices $i < j$ such that $L[i] > L[j]$. 
+These are called \textit{inverted pairs}.
+Develop an $O(n\log n)$ algorithm that counts the number of inverted pairs (i.e. compute the value $k$).
+
+\newpage
+
+
+\section*{Problem 3 -- Best subset problem (40\%)}
+The \textit{best subset problem} is defined as, given a list $(x_1,x_2,\dots,x_n)$ of integers (which can be positive, negative, or zero), find $(i,j)$ such that $x_i+x_{i+1}+\dots+x_j$ is maximum for any $1\leq i \leq j \leq n$.
+For example, if $n = 10$ and the input is $(4,-8,-5,8,-4,3,6,-3,2,-11)$ then the output is $x_4 + x_5 + x_6 + x_7 = 8-4 + 3 + 6 = 13$. 
+\begin{enumerate}
+    \item Develop an $O(n)$ algorithm for the related problem, \textit{best subset middle} or BSM.
+    The input to BSM is a list $(x_1,x_2,\dots,x_n)$ of integers (which can be positive, negative, or zero) and the output is the maximum value of $x_i + x_{i+1} + \dots + x_j$ such that $[i,j]$ spans $\frac{n}{2}$, in other words, for all possibilities for $i$ and $j$ such that $1 \leq i \leq \frac{n}{2} \leq j \leq n$. 
+\item Design a recursive algorithm for the best subset problem with runtime $O(n \log n)$ that uses the BSM function.
+\item Argue that your algorithm is indeed correct and prove the runtime is $O(n \log n)$.
+\item (Extra credit: 5pts) Design an algorithm for the best subset problem that has $O(n)$ runtime. Argue why your algorithm is correct and has $O(n)$ runtime.
+\end{enumerate}
+
+
+\end{document}
